@@ -1,0 +1,17 @@
+aiofiles
+aiohttp
+aiodns
+asyncio-throttle
+beautifulsoup4
+certifi
+cryptography
+dnspython
+httpx[http2]
+jinja2
+lxml
+pydantic>=2.0
+python-dotenv
+python-whois
+rich
+tldextract
+typer[all]

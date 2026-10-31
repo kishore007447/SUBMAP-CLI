@@ -1,0 +1,95 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "submap"
+version = "1.0.0"
+description = "Advanced Subdomain Discovery, Reconnaissance & Attack Surface Mapping Framework"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Kishore Baskaran", email = "0xk1sh0re@proton.me" }]
+keywords = ["security", "reconnaissance", "subdomain", "pentest", "osint"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+]
+requires-python = ">=3.12"
+dependencies = [
+    "typer[all]>=0.12.0",
+    "rich>=13.7.0",
+    "dnspython>=2.6.0",
+    "httpx[http2]>=0.27.0",
+    "pydantic>=2.7.0",
+    "jinja2>=3.1.0",
+    "aiofiles>=23.2.0",
+    "asyncio-throttle>=1.0.2",
+    "tldextract>=5.1.0",
+    "bs4>=0.0.2",
+    "lxml>=5.2.0",
+    "cryptography>=42.0.0",
+    "python-whois>=0.9.0",
+    "certifi>=2024.2.2",
+    "aiohttp>=3.9.0",
+    "aiodns>=3.2.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=5.0.0",
+    "pytest-mock>=3.12.0",
+    "respx>=0.21.0",
+    "black>=24.0.0",
+    "isort>=5.13.0",
+    "mypy>=1.9.0",
+    "ruff>=0.4.0",
+]
+
+[project.scripts]
+submap = "submap.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/kishore007447/SUBMAP-CLI"
+Repository = "https://github.com/kishore007447/SUBMAP-CLI"
+Issues = "https://github.com/kishore007447/SUBMAP-CLI/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["submap*"]
+
+[tool.setuptools.package-data]
+submap = ["templates/*.html", "templates/*.md"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.mypy]
+python_version = "3.12"
+strict = false
+ignore_missing_imports = true
